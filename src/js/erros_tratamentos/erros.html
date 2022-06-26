@@ -1,0 +1,63 @@
+<script>
+  /* ---------------------- // ---------------------- */
+  /* ReferenceError  */
+
+  try {
+    enviadaClienteSemValor + naoExiste;
+  } catch (error) {
+    // console.log(error);
+    console.log(error.name);   
+    console.log(error.message);
+  }
+
+  /* ---------------------- // ---------------------- */
+  /* SintaxeError  */
+
+  try {
+    eval(
+      'alert("Vai dar Erro de sintaxe vou errar algo no comando- esquecendo fechar virgula da string)'
+    );
+  } catch (error) {
+    console.log(error.name);
+    console.log(error.message);
+  }
+
+  /* ---------------------- // ---------------------- */
+  /* TypeError  */
+
+  // exemplo: com nome e mensagem do erro vindas por padrao do js
+  try {
+    //
+    let enviadaClient = 2;
+    enviadaClient.toUpperCase(); // Vai dar erro de Tipo - o tipo numero nao pode tentar transformar em maiuscula
+    //
+  } catch (error) {
+    console.log(error.name);
+    console.log(error.message);
+  }
+
+  /* ---------------------- // ---------------------- */
+  /* OBJETO ERRO_CUSTOMIZADO  */
+
+  function ErroCustomizado(message) {
+    this.message = message;
+    this.name = "ErroCustomizado";
+  }
+
+  // USANDO A FUNCAO DE ERRO_CUSTOMIZADO:
+  try {
+    //
+    let enviadaClient2 = -10; // ENVIADO PELO CLIENTE
+
+    if (enviadaClient2 < 0) {
+      throw new ErroCustomizado("O numero tem que ser positivo!");
+    }
+
+    //
+  } catch (error) {
+    console.log(error.name);
+    console.log(error.message);
+  }
+
+  //
+</script>
